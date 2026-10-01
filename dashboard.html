@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — SPORTSMEN HR MANAGEMENT SYSTEM</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="badge">🛡</div>
+      <h1>SPORTSMEN HR<small>MANAGEMENT SYSTEM</small></h1>
+    </div>
+    <nav class="nav">
+      <div class="nav-section">Main Menu</div>
+      <a href="dashboard.html" data-nav="dashboard"><span class="ico">🏠</span>Dashboard</a>
+<a href="sportsmen.html" data-nav="sportsmen"><span class="ico">👥</span>Sportsmen</a>
+<a href="add-sportsman.html" data-nav="add"><span class="ico">➕</span>Add Sportsman</a>
+<a href="search.html" data-nav="search"><span class="ico">🔍</span>Search Records</a>
+<a href="reports.html" data-nav="reports"><span class="ico">📊</span>Reports</a>
+<a href="settings.html" data-nav="settings"><span class="ico">⚙</span>Settings</a>
+
+      <div class="nav-section">Account</div>
+      <a href="#" class="js-logout"><span class="ico">🚪</span>Logout</a>
+    </nav>
+    <div class="sidebar-foot">v1.0 · Prototype Build<br>Authorized use only</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="hamburger" id="hamburger" title="Menu">☰</button>
+      <div class="topbar-title">Dashboard</div>
+      <div class="topbar-date">📅 <span id="topbar-date"></span></div>
+      <div class="topbar-actions">
+        <button class="icon-btn js-theme-toggle" title="Toggle dark / light mode">🌙</button>
+        <a class="icon-btn" href="add-sportsman.html" title="Quick Add Sportsman" style="text-decoration:none">➕</a>
+        <div class="user-chip" id="user-chip" title="Account">
+          <div class="avatar">AD</div>
+          <div><div class="uname js-uname">—</div><div class="urole js-urole">—</div></div>
+        </div>
+        <div class="user-menu" id="user-menu">
+          <a href="settings.html">👤 My Profile &amp; Settings</a>
+          <div class="divider"></div>
+          <a href="#" class="js-logout">🚪 Logout</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="page-head">
+        <div><h2>Dashboard</h2><p>Overview of sportsmen personnel records and system activity</p></div>
+        <div class="actions"><a class="btn btn-primary" href="add-sportsman.html">➕ Add Sportsman</a></div>
+      </div>
+      
+<div class="stats-grid">
+  <div class="stat-card" style="--sc:#2b6cb0"><div class="stat-icon">👥</div><div class="stat-info"><div class="num" id="stat-total">0</div><div class="lbl">Total Sportsmen</div></div></div>
+  <div class="stat-card" style="--sc:#2f855a"><div class="stat-icon">✅</div><div class="stat-info"><div class="num" id="stat-active">0</div><div class="lbl">Active Sportsmen</div></div></div>
+  <div class="stat-card" style="--sc:#c9a227"><div class="stat-icon">🏅</div><div class="stat-info"><div class="num" id="stat-sports">0</div><div class="lbl">Sports Events</div></div></div>
+  <div class="stat-card" style="--sc:#805ad5"><div class="stat-icon">🎖</div><div class="stat-info"><div class="num" id="stat-units">0</div><div class="lbl">Units</div></div></div>
+  <div class="stat-card" style="--sc:#c05621"><div class="stat-icon">🕒</div><div class="stat-info"><div class="num" id="stat-recent">0</div><div class="lbl">Added Last 30 Days</div></div></div>
+</div>
+
+<div class="dash-grid">
+  <div class="card">
+    <h3 class="card-title"><span class="ico">📊</span> Sportsmen Distribution by Sports Event <span class="line"></span></h3>
+    <canvas class="chart" id="sport-chart" height="265"></canvas>
+  </div>
+  <div class="card">
+    <h3 class="card-title"><span class="ico">🔍</span> Quick Search <span class="line"></span></h3>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:12px">Search by name, service number, rank, unit or phone number across all records.</p>
+    <div class="search-box" style="max-width:none">
+      <span class="ico">🔎</span>
+      <input class="input" id="quick-search" placeholder="Type and press Enter to search…">
+    </div>
+    <div style="margin-top:18px;display:grid;gap:10px">
+      <a class="btn btn-primary" href="add-sportsman.html">➕ Quick Add Sportsman</a>
+      <a class="btn btn-outline" href="reports.html">📊 View Reports</a>
+      <a class="btn btn-outline" href="sportsmen.html">📋 Browse All Records</a>
+    </div>
+  </div>
+</div>
+
+<div class="card" style="padding:0;overflow:hidden">
+  <h3 class="card-title" style="padding:20px 22px 0"><span class="ico">🕒</span> Recently Added Sportsmen <span class="line"></span>
+    <a href="sportsmen.html" style="font-size:12.5px;font-weight:600">View all →</a></h3>
+  <div class="table-wrap" style="border:none;box-shadow:none">
+    <table class="tbl">
+      <thead><tr><th>Profile</th><th>Service Number</th><th>Rank</th><th>Name</th><th>Unit</th><th>Sports Event</th><th>Status</th><th>Action</th></tr></thead>
+      <tbody id="recent-body"></tbody>
+    </table>
+  </div>
+</div>
+
+    </main>
+    <footer class="app-foot">SPORTSMEN HR MANAGEMENT SYSTEM · Confidential — For authorized administrative use only · Prototype v1.0</footer>
+  </div>
+</div>
+<script src="js/storage.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

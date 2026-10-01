@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personnel Profile — SPORTSMEN HR MANAGEMENT SYSTEM</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="badge">🛡</div>
+      <h1>SPORTSMEN HR<small>MANAGEMENT SYSTEM</small></h1>
+    </div>
+    <nav class="nav">
+      <div class="nav-section">Main Menu</div>
+      <a href="dashboard.html" data-nav="dashboard"><span class="ico">🏠</span>Dashboard</a>
+<a href="sportsmen.html" data-nav="sportsmen"><span class="ico">👥</span>Sportsmen</a>
+<a href="add-sportsman.html" data-nav="add"><span class="ico">➕</span>Add Sportsman</a>
+<a href="search.html" data-nav="search"><span class="ico">🔍</span>Search Records</a>
+<a href="reports.html" data-nav="reports"><span class="ico">📊</span>Reports</a>
+<a href="settings.html" data-nav="settings"><span class="ico">⚙</span>Settings</a>
+
+      <div class="nav-section">Account</div>
+      <a href="#" class="js-logout"><span class="ico">🚪</span>Logout</a>
+    </nav>
+    <div class="sidebar-foot">v1.0 · Prototype Build<br>Authorized use only</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="hamburger" id="hamburger" title="Menu">☰</button>
+      <div class="topbar-title">Personnel Profile</div>
+      <div class="topbar-date">📅 <span id="topbar-date"></span></div>
+      <div class="topbar-actions">
+        <button class="icon-btn js-theme-toggle" title="Toggle dark / light mode">🌙</button>
+        <a class="icon-btn" href="add-sportsman.html" title="Quick Add Sportsman" style="text-decoration:none">➕</a>
+        <div class="user-chip" id="user-chip" title="Account">
+          <div class="avatar">AD</div>
+          <div><div class="uname js-uname">—</div><div class="urole js-urole">—</div></div>
+        </div>
+        <div class="user-menu" id="user-menu">
+          <a href="settings.html">👤 My Profile &amp; Settings</a>
+          <div class="divider"></div>
+          <a href="#" class="js-logout">🚪 Logout</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="page-head">
+        <div><h2>Personnel Profile</h2><p>Detailed service, sports and personal information</p></div>
+        
+      </div>
+      <div id="profile-root"></div>
+    </main>
+    <footer class="app-foot">SPORTSMEN HR MANAGEMENT SYSTEM · Confidential — For authorized administrative use only · Prototype v1.0</footer>
+  </div>
+</div>
+<script src="js/storage.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>

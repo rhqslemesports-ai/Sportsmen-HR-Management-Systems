@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Records — SPORTSMEN HR MANAGEMENT SYSTEM</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="badge">🛡</div>
+      <h1>SPORTSMEN HR<small>MANAGEMENT SYSTEM</small></h1>
+    </div>
+    <nav class="nav">
+      <div class="nav-section">Main Menu</div>
+      <a href="dashboard.html" data-nav="dashboard"><span class="ico">🏠</span>Dashboard</a>
+<a href="sportsmen.html" data-nav="sportsmen"><span class="ico">👥</span>Sportsmen</a>
+<a href="add-sportsman.html" data-nav="add"><span class="ico">➕</span>Add Sportsman</a>
+<a href="search.html" data-nav="search"><span class="ico">🔍</span>Search Records</a>
+<a href="reports.html" data-nav="reports"><span class="ico">📊</span>Reports</a>
+<a href="settings.html" data-nav="settings"><span class="ico">⚙</span>Settings</a>
+
+      <div class="nav-section">Account</div>
+      <a href="#" class="js-logout"><span class="ico">🚪</span>Logout</a>
+    </nav>
+    <div class="sidebar-foot">v1.0 · Prototype Build<br>Authorized use only</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="hamburger" id="hamburger" title="Menu">☰</button>
+      <div class="topbar-title">Search Records</div>
+      <div class="topbar-date">📅 <span id="topbar-date"></span></div>
+      <div class="topbar-actions">
+        <button class="icon-btn js-theme-toggle" title="Toggle dark / light mode">🌙</button>
+        <a class="icon-btn" href="add-sportsman.html" title="Quick Add Sportsman" style="text-decoration:none">➕</a>
+        <div class="user-chip" id="user-chip" title="Account">
+          <div class="avatar">AD</div>
+          <div><div class="uname js-uname">—</div><div class="urole js-urole">—</div></div>
+        </div>
+        <div class="user-menu" id="user-menu">
+          <a href="settings.html">👤 My Profile &amp; Settings</a>
+          <div class="divider"></div>
+          <a href="#" class="js-logout">🚪 Logout</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="page-head">
+        <div><h2>Search Records</h2><p>Field-specific advanced lookup across all personnel records</p></div>
+        
+      </div>
+      
+<div class="card">
+  <h3 class="card-title"><span class="ico">🧭</span> Advanced Search Criteria <span class="line"></span></h3>
+  <div class="adv-search-grid">
+    <div class="field"><label>Service Number</label><input class="input s-field" data-key="serviceNumber" placeholder="e.g. SN-1001"></div>
+    <div class="field"><label>Name</label><input class="input s-field" data-key="name" placeholder="e.g. Perera"></div>
+    <div class="field"><label>Rank</label><select class="input s-field" data-key="rank"><option value=""></option></select></div>
+    <div class="field"><label>Unit</label><select class="input s-field" data-key="unit"><option value=""></option></select></div>
+    <div class="field"><label>Workplace</label><select class="input s-field" data-key="workplace"><option value=""></option></select></div>
+    <div class="field"><label>Sports Event</label><select class="input s-field" data-key="sportsEvent"><option value=""></option></select></div>
+    <div class="field"><label>National ID Number</label><input class="input s-field" data-key="nationalIdNumber" placeholder="NID-…"></div>
+    <div class="field"><label>Army ID Number</label><input class="input s-field" data-key="armyIdNumber" placeholder="AID-…"></div>
+    <div class="field"><label>Phone Number</label><input class="input s-field" data-key="phoneNumber" placeholder="+94 …"></div>
+  </div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <button class="btn btn-outline btn-sm" id="s-clear">✕ Clear Search</button>
+    <span style="flex:1"></span>
+    <span id="s-count" style="align-self:center;font-size:13px;color:var(--muted)"></span>
+  </div>
+</div>
+<div class="table-wrap" style="margin-top:16px">
+  <table class="tbl">
+    <thead><tr><th>Profile</th><th>Service Number</th><th>Rank</th><th>Name</th><th>Unit</th><th>Workplace</th><th>Sports Event</th><th>Status</th><th>Action</th></tr></thead>
+    <tbody id="s-body"></tbody>
+  </table>
+</div>
+
+    </main>
+    <footer class="app-foot">SPORTSMEN HR MANAGEMENT SYSTEM · Confidential — For authorized administrative use only · Prototype v1.0</footer>
+  </div>
+</div>
+<script src="js/storage.js"></script>
+<script src="js/auth.js"></script>
+
+<script>
+(function(){
+  wireApp("search");
+  document.querySelector('.s-field[data-key="rank"]').innerHTML = '<option value=""></option>' + RANKS.map(r=>'<option>'+r+'</option>').join("");
+  document.querySelector('.s-field[data-key="unit"]').innerHTML = '<option value=""></option>' + UNITS.map(r=>'<option>'+r+'</option>').join("");
+  document.querySelector('.s-field[data-key="workplace"]').innerHTML = '<option value=""></option>' + WORKPLACES.map(r=>'<option>'+r+'</option>').join("");
+  document.querySelector('.s-field[data-key="sportsEvent"]').innerHTML = '<option value=""></option>' + SPORTS.map(r=>'<option>'+r+'</option>').join("");
+  const tbody = document.getElementById("s-body");
+  function run(){
+    const criteria = {};
+    document.querySelectorAll(".s-field").forEach(el => { const v = el.value.trim(); if(v) criteria[el.dataset.key] = v.toLowerCase(); });
+    const results = loadRecords().filter(r => Object.keys(criteria).every(k => String(r[k]||"").toLowerCase().includes(criteria[k])));
+    document.getElementById("s-count").textContent = results.length + " matching record" + (results.length===1?"":"s");
+    if(!results.length){
+      tbody.innerHTML = '<tr><td colspan="9"><div class="empty-state"><div class="big">🔍</div><h3>No matching records</h3><p>Enter at least one criterion to search. Partial matches are supported.</p></div></td></tr>';
+      return;
+    }
+    tbody.innerHTML = results.map(r =>
+      '<tr><td>'+avatarHTML(r)+'</td><td><b>'+escapeHtml(r.serviceNumber)+'</b></td><td>'+escapeHtml(r.rank)+'</td>' +
+      '<td><b>'+escapeHtml(r.name)+'</b></td><td>'+escapeHtml(r.unit)+'</td><td>'+escapeHtml(r.workplace)+'</td>' +
+      '<td>'+escapeHtml(r.sportsEvent)+'</td><td><span class="pill '+(r.status==="Active"?"active":"inactive")+'">'+escapeHtml(r.status)+'</span></td>' +
+      '<td><a class="btn btn-primary btn-sm" href="profile.html?id='+r.id+'">👁 View Profile</a></td></tr>'
+    ).join("");
+  }
+  document.querySelectorAll(".s-field").forEach(el => el.addEventListener("input", run));
+  document.querySelectorAll("select.s-field").forEach(el => el.addEventListener("change", run));
+  document.getElementById("s-clear").addEventListener("click", () => { document.querySelectorAll(".s-field").forEach(el => el.value = ""); run(); });
+  const q = new URLSearchParams(location.search).get("q");
+  if(q){ document.querySelector('.s-field[data-key="name"]').value = q; }
+  run();
+})();
+</script>
+</body>
+</html>

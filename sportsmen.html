@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sportsmen Records — SPORTSMEN HR MANAGEMENT SYSTEM</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="badge">🛡</div>
+      <h1>SPORTSMEN HR<small>MANAGEMENT SYSTEM</small></h1>
+    </div>
+    <nav class="nav">
+      <div class="nav-section">Main Menu</div>
+      <a href="dashboard.html" data-nav="dashboard"><span class="ico">🏠</span>Dashboard</a>
+<a href="sportsmen.html" data-nav="sportsmen"><span class="ico">👥</span>Sportsmen</a>
+<a href="add-sportsman.html" data-nav="add"><span class="ico">➕</span>Add Sportsman</a>
+<a href="search.html" data-nav="search"><span class="ico">🔍</span>Search Records</a>
+<a href="reports.html" data-nav="reports"><span class="ico">📊</span>Reports</a>
+<a href="settings.html" data-nav="settings"><span class="ico">⚙</span>Settings</a>
+
+      <div class="nav-section">Account</div>
+      <a href="#" class="js-logout"><span class="ico">🚪</span>Logout</a>
+    </nav>
+    <div class="sidebar-foot">v1.0 · Prototype Build<br>Authorized use only</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="hamburger" id="hamburger" title="Menu">☰</button>
+      <div class="topbar-title">Sportsmen Records</div>
+      <div class="topbar-date">📅 <span id="topbar-date"></span></div>
+      <div class="topbar-actions">
+        <button class="icon-btn js-theme-toggle" title="Toggle dark / light mode">🌙</button>
+        <a class="icon-btn" href="add-sportsman.html" title="Quick Add Sportsman" style="text-decoration:none">➕</a>
+        <div class="user-chip" id="user-chip" title="Account">
+          <div class="avatar">AD</div>
+          <div><div class="uname js-uname">—</div><div class="urole js-urole">—</div></div>
+        </div>
+        <div class="user-menu" id="user-menu">
+          <a href="settings.html">👤 My Profile &amp; Settings</a>
+          <div class="divider"></div>
+          <a href="#" class="js-logout">🚪 Logout</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="page-head">
+        <div><h2>Sportsmen Records</h2><p>Search, filter and manage all registered personnel</p></div>
+        <div class="actions"><span id="result-count" style="align-self:center;font-size:13px;color:var(--muted);margin-right:6px"></span><a class="btn btn-primary" href="add-sportsman.html">➕ Add Sportsman</a></div>
+      </div>
+      
+<div class="toolbar">
+  <div class="search-box">
+    <span class="ico">🔎</span>
+    <input class="input" id="table-search" placeholder="Search name, service no, rank, unit, phone…">
+  </div>
+  <select class="input" id="f-rank"></select>
+  <select class="input" id="f-unit"></select>
+  <select class="input" id="f-sport"></select>
+  <select class="input" id="f-workplace"></select>
+  <select class="input" id="f-status">
+    <option value="">All Statuses</option><option>Active</option><option>Inactive</option>
+  </select>
+  <select class="input" id="sort-by">
+    <option value="name-asc">Sort: Name A→Z</option>
+    <option value="name-desc">Sort: Name Z→A</option>
+    <option value="serviceNumber-asc">Sort: Service No ↑</option>
+    <option value="serviceNumber-desc">Sort: Service No ↓</option>
+  </select>
+  <button class="btn btn-outline btn-sm" id="adv-toggle">▼ Advanced Search</button>
+  <button class="btn btn-outline btn-sm" id="clear-filters">✕ Clear Filters</button>
+</div>
+<div class="card" id="adv-panel" style="display:none;margin-bottom:16px">
+  <h3 class="card-title"><span class="ico">🧭</span> Advanced Filters <span class="line"></span></h3>
+  <p style="color:var(--muted);font-size:13px">Use the filter dropdowns above in any combination. Results update instantly. For field-specific lookups (National ID, Army ID, etc.) use the <a href="search.html">Search Records</a> page.</p>
+</div>
+<div class="table-wrap">
+  <table class="tbl">
+    <thead><tr><th>Profile</th><th>Service Number</th><th>Rank</th><th>Name</th><th>Unit</th><th>Workplace</th><th>Sports Event</th><th>Weight Class</th><th>Phone</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody id="records-body"></tbody>
+  </table>
+</div>
+<div class="pagination" id="pagination"></div>
+
+    </main>
+    <footer class="app-foot">SPORTSMEN HR MANAGEMENT SYSTEM · Confidential — For authorized administrative use only · Prototype v1.0</footer>
+  </div>
+</div>
+<script src="js/storage.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/sportsmen.js"></script>
+</body>
+</html>

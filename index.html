@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login — SPORTSMEN HR MANAGEMENT SYSTEM</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="login-body">
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="badge">🛡</div>
+      <div>
+        <h1>SPORTSMEN HR</h1>
+        <div style="font-size:11px;letter-spacing:2px;color:var(--gold);font-weight:700">MANAGEMENT SYSTEM</div>
+      </div>
+    </div>
+    <p class="login-sub">Sign in to access the personnel administrative portal. Authorized personnel only.</p>
+    <div class="login-error" id="login-error">⚠ Invalid username or password. Please try again.</div>
+    <form id="login-form" novalidate>
+      <div class="field">
+        <label for="username">Username <span class="req">*</span></label>
+        <input class="input" type="text" id="username" placeholder="Enter username" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label for="password">Password <span class="req">*</span></label>
+        <div class="pw-wrap">
+          <input class="input" type="password" id="password" placeholder="Enter password" autocomplete="current-password" required>
+          <button type="button" class="pw-toggle" id="pw-toggle" title="Show / hide password">👁</button>
+        </div>
+      </div>
+      <div class="check-row">
+        <input type="checkbox" id="remember">
+        <label for="remember" style="cursor:pointer">Remember me on this device</label>
+        <span style="flex:1"></span>
+        <a href="#" id="forgot" style="font-size:12.5px">Forgot password?</a>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" id="login-btn">🔒 Sign In</button>
+    </form>
+    <div class="demo-hint">Prototype demo login — user: <code>admin</code> · pass: <code>admin123</code></div>
+    <div class="login-note">🔒 This is a demonstration prototype. Connect a secure backend &amp; database before production use.</div>
+  </div>
+
+<script src="js/storage.js"></script>
+<script src="js/auth.js"></script>
+<script>
+(function(){
+  const form = document.getElementById("login-form"),
+        err = document.getElementById("login-error"),
+        pw = document.getElementById("password"),
+        tog = document.getElementById("pw-toggle"),
+        userEl = document.getElementById("username");
+  /* prefill remembered username */
+  const rem = localStorage.getItem("shms_remember");
+  if(rem){ userEl.value = rem; document.getElementById("remember").checked = true; }
+  /* already logged in? go straight to dashboard */
+  if(getSession()){ window.location.href = "dashboard.html"; return; }
+  tog.addEventListener("click", () => {
+    pw.type = pw.type === "password" ? "text" : "password";
+    tog.textContent = pw.type === "password" ? "👁" : "🙈";
+  });
+  document.getElementById("forgot").addEventListener("click", e => {
+    e.preventDefault();
+    alert("Password reset requires a secure backend.\nFor this prototype, use the demo credentials.");
+  });
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    err.classList.remove("show");
+    const btn = document.getElementById("login-btn");
+    btn.textContent = "⏳ Verifying…"; btn.disabled = true;
+    setTimeout(() => {
+      if(doLogin(userEl.value.trim(), pw.value, document.getElementById("remember").checked)){
+        btn.textContent = "✓ Access granted — redirecting…";
+        setTimeout(() => window.location.href = "dashboard.html", 450);
+      } else {
+        btn.textContent = "🔒 Sign In"; btn.disabled = false;
+        err.classList.add("show");
+        pw.value = ""; pw.focus();
+      }
+    }, 600);
+  });
+})();
+</script>
+</body>
+</html>

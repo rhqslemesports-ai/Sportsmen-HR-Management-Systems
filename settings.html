@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings — SPORTSMEN HR MANAGEMENT SYSTEM</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="badge">🛡</div>
+      <h1>SPORTSMEN HR<small>MANAGEMENT SYSTEM</small></h1>
+    </div>
+    <nav class="nav">
+      <div class="nav-section">Main Menu</div>
+      <a href="dashboard.html" data-nav="dashboard"><span class="ico">🏠</span>Dashboard</a>
+<a href="sportsmen.html" data-nav="sportsmen"><span class="ico">👥</span>Sportsmen</a>
+<a href="add-sportsman.html" data-nav="add"><span class="ico">➕</span>Add Sportsman</a>
+<a href="search.html" data-nav="search"><span class="ico">🔍</span>Search Records</a>
+<a href="reports.html" data-nav="reports"><span class="ico">📊</span>Reports</a>
+<a href="settings.html" data-nav="settings"><span class="ico">⚙</span>Settings</a>
+
+      <div class="nav-section">Account</div>
+      <a href="#" class="js-logout"><span class="ico">🚪</span>Logout</a>
+    </nav>
+    <div class="sidebar-foot">v1.0 · Prototype Build<br>Authorized use only</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="hamburger" id="hamburger" title="Menu">☰</button>
+      <div class="topbar-title">Settings</div>
+      <div class="topbar-date">📅 <span id="topbar-date"></span></div>
+      <div class="topbar-actions">
+        <button class="icon-btn js-theme-toggle" title="Toggle dark / light mode">🌙</button>
+        <a class="icon-btn" href="add-sportsman.html" title="Quick Add Sportsman" style="text-decoration:none">➕</a>
+        <div class="user-chip" id="user-chip" title="Account">
+          <div class="avatar">AD</div>
+          <div><div class="uname js-uname">—</div><div class="urole js-urole">—</div></div>
+        </div>
+        <div class="user-menu" id="user-menu">
+          <a href="settings.html">👤 My Profile &amp; Settings</a>
+          <div class="divider"></div>
+          <a href="#" class="js-logout">🚪 Logout</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="page-head">
+        <div><h2>Settings</h2><p>System preferences, account and data management</p></div>
+        
+      </div>
+      
+    
+<div class="profile-grid">
+  <div class="card">
+    <h3 class="card-title"><span class="ico">👤</span> Account <span class="line"></span></h3>
+    <div class="settings-row">
+      <div class="s-info"><h4 class="js-uname">—</h4><p>Logged-in user</p></div>
+      <span class="pill active">Administrator</span>
+    </div>
+    <div class="settings-row">
+      <div class="s-info"><h4>Role-Based Access</h4><p>Prototype placeholder — roles will be enforced by the backend when connected.</p></div>
+      <span class="pill" style="background:rgba(201,162,39,.15);color:#a3821a">Placeholder</span>
+    </div>
+    <div class="settings-row">
+      <div class="s-info"><h4>Change Password</h4><p>Password changes require the secure backend.</p></div>
+      <button class="btn btn-outline btn-sm" onclick="toast('Connect a secure backend to enable password changes.','info')">🔒 Change</button>
+    </div>
+    <div class="settings-row">
+      <div class="s-info"><h4>Logout</h4><p>End the current session.</p></div>
+      <button class="btn btn-danger btn-sm js-logout">🚪 Logout</button>
+    </div>
+  </div>
+  <div class="card">
+    <h3 class="card-title"><span class="ico">🎨</span> Appearance <span class="line"></span></h3>
+    <div class="settings-row">
+      <div class="s-info"><h4>Dark Mode</h4><p>Toggle between light and dark interface themes.</p></div>
+      <label class="switch"><input type="checkbox" id="dark-switch"><span class="slider"></span></label>
+    </div>
+  </div>
+  <div class="card" style="grid-column:1/-1">
+    <h3 class="card-title"><span class="ico">🗄</span> Data Management <span class="line"></span></h3>
+    <div class="settings-row">
+      <div class="s-info"><h4>Export All Records (JSON)</h4><p>Download the complete register as a structured JSON file for backup or backend migration.</p></div>
+      <button class="btn btn-outline btn-sm" id="set-export">⬇ Export JSON</button>
+    </div>
+    <div class="settings-row">
+      <div class="s-info"><h4>Import Records (JSON)</h4><p>Restore records from a previously exported JSON file.</p></div>
+      <label class="btn btn-outline btn-sm" style="cursor:pointer">⬆ Import JSON<input type="file" id="set-import" accept="application/json" hidden></label>
+    </div>
+    <div class="settings-row">
+      <div class="s-info"><h4>Restore Sample Data</h4><p>Reset the dataset to the built-in fictional demonstration records.</p></div>
+      <button class="btn btn-gold btn-sm" id="set-reset">↺ Reset Demo Data</button>
+    </div>
+    <div class="settings-row">
+      <div class="s-info"><h4>Clear All Data</h4><p>Permanently delete every record stored in this prototype. This cannot be undone.</p></div>
+      <button class="btn btn-danger btn-sm" id="set-wipe">🗑 Clear All</button>
+    </div>
+  </div>
+  <div class="card" style="grid-column:1/-1">
+    <h3 class="card-title"><span class="ico">🔐</span> Security &amp; Privacy Notice <span class="line"></span></h3>
+    <p style="color:var(--muted);font-size:13.5px;line-height:1.7">
+      This system handles sensitive personnel information. This <b>frontend prototype</b> stores all data in your browser (localStorage)
+      and performs authentication client-side <b>for demonstration only</b>. Before any real deployment you must connect a secure server-side
+      backend with proper authentication, encrypted storage, access control and audit logging. Do not enter real personal data into this prototype.
+    </p>
+  </div>
+</div>
+
+    </main>
+    <footer class="app-foot">SPORTSMEN HR MANAGEMENT SYSTEM · Confidential — For authorized administrative use only · Prototype v1.0</footer>
+  </div>
+</div>
+<script src="js/storage.js"></script>
+<script src="js/auth.js"></script>
+
+<script>
+(function(){
+  wireApp("settings");
+  const sw = document.getElementById("dark-switch");
+  sw.checked = (localStorage.getItem(THEME_KEY) || "light") === "dark";
+  sw.addEventListener("change", () => { toggleTheme(); document.querySelectorAll(".js-theme-toggle").forEach(x => x.textContent = (localStorage.getItem(THEME_KEY)==="dark" ? "☀" : "🌙")); });
+  document.getElementById("set-export").addEventListener("click", () => {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([exportJSON()], { type:"application/json" }));
+    a.download = "sportsmen-records-backup.json"; a.click(); URL.revokeObjectURL(a.href);
+    toast("All records exported as JSON.");
+  });
+  document.getElementById("set-import").addEventListener("change", e => {
+    const f = e.target.files[0]; if(!f) return;
+    const rd = new FileReader();
+    rd.onload = ev => {
+      try{
+        const data = JSON.parse(ev.target.result);
+        if(!Array.isArray(data)) throw 0;
+        saveRecords(data); toast("Imported " + data.length + " records successfully.");
+      }catch(err){ toast("Invalid JSON file.", "err"); }
+    };
+    rd.readAsText(f); e.target.value = "";
+  });
+  document.getElementById("set-reset").addEventListener("click", () =>
+    confirmModal("Restore the built-in sample dataset? All current records will be replaced.", () => { resetSampleData(); toast("Sample data restored."); }));
+  document.getElementById("set-wipe").addEventListener("click", () =>
+    confirmModal("Permanently delete ALL records? This action cannot be undone.", () => { saveRecords([]); toast("All data cleared.", "info"); }));
+})();
+</script>
+</body>
+</html>

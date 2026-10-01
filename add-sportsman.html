@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Sportsman — SPORTSMEN HR MANAGEMENT SYSTEM</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="badge">🛡</div>
+      <h1>SPORTSMEN HR<small>MANAGEMENT SYSTEM</small></h1>
+    </div>
+    <nav class="nav">
+      <div class="nav-section">Main Menu</div>
+      <a href="dashboard.html" data-nav="dashboard"><span class="ico">🏠</span>Dashboard</a>
+<a href="sportsmen.html" data-nav="sportsmen"><span class="ico">👥</span>Sportsmen</a>
+<a href="add-sportsman.html" data-nav="add"><span class="ico">➕</span>Add Sportsman</a>
+<a href="search.html" data-nav="search"><span class="ico">🔍</span>Search Records</a>
+<a href="reports.html" data-nav="reports"><span class="ico">📊</span>Reports</a>
+<a href="settings.html" data-nav="settings"><span class="ico">⚙</span>Settings</a>
+
+      <div class="nav-section">Account</div>
+      <a href="#" class="js-logout"><span class="ico">🚪</span>Logout</a>
+    </nav>
+    <div class="sidebar-foot">v1.0 · Prototype Build<br>Authorized use only</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="hamburger" id="hamburger" title="Menu">☰</button>
+      <div class="topbar-title">Add Sportsman</div>
+      <div class="topbar-date">📅 <span id="topbar-date"></span></div>
+      <div class="topbar-actions">
+        <button class="icon-btn js-theme-toggle" title="Toggle dark / light mode">🌙</button>
+        <a class="icon-btn" href="add-sportsman.html" title="Quick Add Sportsman" style="text-decoration:none">➕</a>
+        <div class="user-chip" id="user-chip" title="Account">
+          <div class="avatar">AD</div>
+          <div><div class="uname js-uname">—</div><div class="urole js-urole">—</div></div>
+        </div>
+        <div class="user-menu" id="user-menu">
+          <a href="settings.html">👤 My Profile &amp; Settings</a>
+          <div class="divider"></div>
+          <a href="#" class="js-logout">🚪 Logout</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="page-head">
+        <div><h2>Add Sportsman</h2><p>Register a new sportsman — personal & service information</p></div>
+        
+      </div>
+      
+<div class="card">
+  <div class="upload-box">
+    <div class="upload-preview" id="img-preview">📷</div>
+    <div>
+      <h4 style="margin-bottom:4px">Profile Photograph</h4>
+      <p style="color:var(--muted);font-size:12.5px;margin-bottom:10px">Upload a clear, recent portrait. JPG / PNG supported.</p>
+      <div class="upload-actions">
+        <button type="button" class="btn btn-primary btn-sm" id="btn-upload-img">⬆ Upload Image</button>
+        <button type="button" class="btn btn-outline btn-sm" id="btn-change-img" style="display:none">🔄 Change Image</button>
+        <button type="button" class="btn btn-danger btn-sm" id="btn-remove-img" style="display:none">🗑 Remove</button>
+        <input type="file" id="f-image" accept="image/*" hidden>
+      </div>
+    </div>
+  </div>
+
+  <form id="personnel-form" novalidate>
+    <div class="section-band">🎖 A · SERVICE INFORMATION</div>
+    <div class="form-grid">
+      <div class="field"><label>Service Number <span class="req">*</span></label><input class="input" id="f-serviceno" placeholder="e.g. SN-1009"><div class="error-msg">Service number is required.</div></div>
+      <div class="field"><label>Rank <span class="req">*</span></label><select class="input" id="f-rank"></select><div class="error-msg">Please select a rank.</div></div>
+      <div class="field"><label>Full Name <span class="req">*</span></label><input class="input" id="f-name" placeholder="e.g. A. B. Perera"><div class="error-msg">Name is required.</div></div>
+      <div class="field"><label>Unit <span class="req">*</span></label><select class="input" id="f-unit"></select><div class="error-msg">Please select a unit.</div></div>
+      <div class="field"><label>Workplace <span class="req">*</span></label><select class="input" id="f-workplace"></select><div class="error-msg">Please select a workplace.</div></div>
+      <div class="field"><label>Record Status</label><select class="input" id="f-status"><option>Active</option><option>Inactive</option></select></div>
+    </div>
+
+    <div class="section-band">🏅 B · SPORTS INFORMATION</div>
+    <div class="form-grid">
+      <div class="field"><label>Sports Event <span class="req">*</span></label><select class="input" id="f-sport"></select><div class="error-msg">Please select a sports event.</div></div>
+      <div class="field"><label>Weight Class</label><select class="input" id="f-weightclass"></select></div>
+      <div class="field"><label>Weight (kg)</label><input class="input" id="f-weight" type="number" min="0" step="0.1" placeholder="e.g. 70.5"></div>
+      <div class="field"><label>Height (cm)</label><input class="input" id="f-height" type="number" min="0" step="0.5" placeholder="e.g. 175"></div>
+    </div>
+
+    <div class="section-band">🪪 C · PERSONAL INFORMATION</div>
+    <div class="form-grid">
+      <div class="field"><label>Blood Group <span class="req">*</span></label><select class="input" id="f-blood"></select><div class="error-msg">Please select a blood group.</div></div>
+      <div class="field"><label>Marital Status <span class="req">*</span></label><select class="input" id="f-marital"></select><div class="error-msg">Please select marital status.</div></div>
+      <div class="field"><label>National ID Number</label><input class="input" id="f-nid" placeholder="e.g. NID-88XXXXXX9"></div>
+      <div class="field"><label>Army ID Number</label><input class="input" id="f-aid" placeholder="e.g. AID-45XXXX09"></div>
+      <div class="field"><label>Phone Number <span class="req">*</span></label><input class="input" id="f-phone" placeholder="+94 7X XXX XXXX"><div class="error-msg">Phone number is required.</div></div>
+      <div class="field"><label>Email Address</label><input class="input" id="f-email" type="email" placeholder="name@example.mil"><div class="error-msg">Enter a valid email address.</div></div>
+      <div class="field full"><label>Address</label><textarea class="input" id="f-address" placeholder="Residential address"></textarea></div>
+    </div>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+      <button type="button" class="btn btn-primary" id="btn-save">💾 Save Record</button>
+      <button type="button" class="btn btn-success" id="btn-save-new">💾 Save &amp; New</button>
+      <button type="button" class="btn btn-outline" id="btn-reset">↺ Reset</button>
+      <button type="button" class="btn btn-outline" id="btn-cancel">✕ Cancel</button>
+    </div>
+  </form>
+</div>
+
+    </main>
+    <footer class="app-foot">SPORTSMEN HR MANAGEMENT SYSTEM · Confidential — For authorized administrative use only · Prototype v1.0</footer>
+  </div>
+</div>
+<script src="js/storage.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/form.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reports — SPORTSMEN HR MANAGEMENT SYSTEM</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="badge">🛡</div>
+      <h1>SPORTSMEN HR<small>MANAGEMENT SYSTEM</small></h1>
+    </div>
+    <nav class="nav">
+      <div class="nav-section">Main Menu</div>
+      <a href="dashboard.html" data-nav="dashboard"><span class="ico">🏠</span>Dashboard</a>
+<a href="sportsmen.html" data-nav="sportsmen"><span class="ico">👥</span>Sportsmen</a>
+<a href="add-sportsman.html" data-nav="add"><span class="ico">➕</span>Add Sportsman</a>
+<a href="search.html" data-nav="search"><span class="ico">🔍</span>Search Records</a>
+<a href="reports.html" data-nav="reports"><span class="ico">📊</span>Reports</a>
+<a href="settings.html" data-nav="settings"><span class="ico">⚙</span>Settings</a>
+
+      <div class="nav-section">Account</div>
+      <a href="#" class="js-logout"><span class="ico">🚪</span>Logout</a>
+    </nav>
+    <div class="sidebar-foot">v1.0 · Prototype Build<br>Authorized use only</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="hamburger" id="hamburger" title="Menu">☰</button>
+      <div class="topbar-title">Reports</div>
+      <div class="topbar-date">📅 <span id="topbar-date"></span></div>
+      <div class="topbar-actions">
+        <button class="icon-btn js-theme-toggle" title="Toggle dark / light mode">🌙</button>
+        <a class="icon-btn" href="add-sportsman.html" title="Quick Add Sportsman" style="text-decoration:none">➕</a>
+        <div class="user-chip" id="user-chip" title="Account">
+          <div class="avatar">AD</div>
+          <div><div class="uname js-uname">—</div><div class="urole js-urole">—</div></div>
+        </div>
+        <div class="user-menu" id="user-menu">
+          <a href="settings.html">👤 My Profile &amp; Settings</a>
+          <div class="divider"></div>
+          <a href="#" class="js-logout">🚪 Logout</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="page-head">
+        <div><h2>Reports</h2><p>Statistical overview and exportable summaries of personnel data</p></div>
+        <div class="actions"><button class="btn btn-outline" id="btn-print">🖨 Print Report</button><button class="btn btn-outline" id="btn-csv">⬇ Export CSV</button><button class="btn btn-primary" id="btn-pdf">📄 Export PDF</button></div>
+      </div>
+      
+<div class="stats-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+  <div class="stat-card" style="--sc:#2b6cb0"><div class="stat-icon">👥</div><div class="stat-info"><div class="num" id="rep-total">0</div><div class="lbl">Total Sportsmen</div></div></div>
+  <div class="stat-card" style="--sc:#2f855a"><div class="stat-icon">✅</div><div class="stat-info"><div class="num" id="rep-active">0</div><div class="lbl">Active Sportsmen</div></div></div>
+</div>
+<div class="card" style="margin-bottom:16px">
+  <h3 class="card-title"><span class="ico">📊</span> Sportsmen by Sports Event <span class="line"></span></h3>
+  <canvas class="chart" id="rep-chart" height="280"></canvas>
+</div>
+<div class="report-grid">
+  <div class="card"><h3 class="card-title"><span class="ico">🎖</span> Sportsmen by Unit <span class="line"></span></h3><div id="rep-unit"></div></div>
+  <div class="card"><h3 class="card-title"><span class="ico">⭐</span> Sportsmen by Rank <span class="line"></span></h3><div id="rep-rank"></div></div>
+  <div class="card"><h3 class="card-title"><span class="ico">🏅</span> Sportsmen by Weight Class <span class="line"></span></h3><div id="rep-weightclass"></div></div>
+  <div class="card"><h3 class="card-title"><span class="ico">🏢</span> Sportsmen by Workplace <span class="line"></span></h3><div id="rep-workplace"></div></div>
+  <div class="card"><h3 class="card-title"><span class="ico">💍</span> Marital Status Statistics <span class="line"></span></h3><div id="rep-marital"></div></div>
+  <div class="card"><h3 class="card-title"><span class="ico">📋</span> Summary Notes <span class="line"></span></h3>
+    <p style="color:var(--muted);font-size:13.5px;line-height:1.7">This report is generated from the current local dataset of the prototype. Use <b>Export CSV</b> to download the full register for spreadsheet analysis, or <b>Print / PDF</b> for an official hard copy. All figures reflect records currently stored in the system.</p>
+  </div>
+</div>
+
+    </main>
+    <footer class="app-foot">SPORTSMEN HR MANAGEMENT SYSTEM · Confidential — For authorized administrative use only · Prototype v1.0</footer>
+  </div>
+</div>
+<script src="js/storage.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/reports.js"></script>
+</body>
+</html>
